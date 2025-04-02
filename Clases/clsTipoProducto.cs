@@ -50,6 +50,31 @@ namespace proyecto.Clases
                 return "No se pudo actualizar el tipo de producto";
             }
         }
+        public string ModificarActivo (int Codigo, bool Activo) {
+            try
+            {
+                TIpoPRoducto tipoProd = Consultar(tipoProducto.Codigo);
+                if (tipoProd == null)
+                {
+                    return "El tipo de producto con el codigo ingresado no existe";
+                }
+                tipoProd.Activo = tipoProducto.Activo;
+                dbSuper.SaveChanges();
+                if (Activo)
+                {
+                    return "Se activo el tipo de producto";
+                }
+                else
+                {
+                    return "Se desactivo el tipo de producto";
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                return "No se pudo actualizar el tipo de producto";
+            }
 
+        }
     }
 }
