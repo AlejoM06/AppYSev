@@ -53,8 +53,9 @@ namespace proyecto.Clases
                         File.Move(file.LocalFileName, Path.Combine(root, fileName));
                     }
                     //Se genera el proceso de gestion en la base de datos
+                    string RptaBD = ProcesarBD();
                     //Termina el ciclo, responde que se cargó el archivo correctamente
-                    return request.CreateResponse(System.Net.HttpStatusCode.OK, "Se cargaron los archivos en el servidor");
+                    return request.CreateResponse(System.Net.HttpStatusCode.OK, "Se cargaron los archivos en el servidor" + RptaBD);
                 }
                 else
                 {
@@ -71,6 +72,8 @@ namespace proyecto.Clases
             switch(Proceso.ToUpper())
             {
                 case "PRODUCTO":
+                    clsProducto producto = new clsProducto();
+                    producto.GrabarImagenProducto(Convert.ToInt32(Datos), Archivos);
                     return "";
                 default:
                     return "No se ha definidio el proceso en la base de datos";
