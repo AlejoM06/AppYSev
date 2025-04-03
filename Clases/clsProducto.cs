@@ -128,5 +128,9 @@ namespace proyecto.Clases
                 return "Hubo un error al modificar el estado del producto: + ex.Message";
                 }
 		}
+        public string GrabarImagenProducto(int Codigo, List<string> Imagenes)
+        {
+
+        }
     }
 }
